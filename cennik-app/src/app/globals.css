@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: #FAF7F2;
+    --foreground: #0A0A0A;
+    --navy: #1A2332;
+    --gold: #D4AF37;
+    --gold-light: #E8C870;
+    --gold-dark: #B8941F;
+    --ivory: #FAF7F2;
+    --cream: #F5EFE6;
+    --black: #0A0A0A;
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+/* Art Deco ornamental elements */
+.art-deco-border {
+    position: relative;
+}
+
+.art-deco-border::before,
+.art-deco-border::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--gold) 20%, 
+        var(--gold-light) 50%, 
+        var(--gold) 80%, 
+        transparent 100%
+    );
+    height: 1px;
+}
+
+.art-deco-border::before {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.art-deco-border::after {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Stepped corner decorations */
+.art-deco-corners {
+    position: relative;
+}
+
+.art-deco-corners::before,
+.art-deco-corners::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--gold);
+    border-style: solid;
+}
+
+.art-deco-corners::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+}
+
+.art-deco-corners::after {
+    top: -1px;
+    right: -1px;
+    border-width: 2px 2px 0 0;
+}
+
+/* Geometric divider */
+.geometric-divider {
+    position: relative;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.geometric-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--gold-dark) 30%, 
+        var(--gold) 50%, 
+        var(--gold-dark) 70%, 
+        transparent 100%
+    );
+}
+
+.geometric-divider span {
+    position: relative;
+    background: var(--ivory);
+    padding: 0 1rem;
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+/* Drop cap for article reader */
+.drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    float: left;
+    line-height: 0.85;
+    margin: 0.1em 0.1em 0 0;
+    color: var(--gold);
+}
+
+/* Sunburst pattern background */
+.sunburst {
+    background: radial-gradient(
+        ellipse at center,
+        var(--ivory) 0%,
+        var(--cream) 100%
+    );
+    position: relative;
+}
+
+.sunburst::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-conic-gradient(
+            from 0deg at 50% 50%,
+            transparent 0deg,
+            rgba(212, 175, 55, 0.03) 1deg,
+            transparent 2deg,
+            transparent 4deg
+        );
+    pointer-events: none;
+}
+
+/* Gold gradient text */
+.gold-gradient-text {
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Fine line separator */
+.fine-line {
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--gold) 10%, 
+        var(--gold) 90%, 
+        transparent 100%
+    );
+}
+
+/* Mobile viewport optimization */
+@media (max-width: 640px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Smooth transitions */
+* {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
