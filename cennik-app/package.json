@@ -28,5 +28,9 @@
     "resolutions": {
         "next": "15.5.7",
         "eslint-config-next": "15.5.7"
+    },
+    "overrides": {
+        "next": "15.5.7",
+        "eslint-config-next": "15.5.7"
     }
 }
