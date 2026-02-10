@@ -21,8 +21,8 @@ export default {
         black: "var(--black)",
       },
       fontFamily: {
-        display: ['"Playfair Display"', "serif"],
-        serif: ['"Cormorant Garamond"', "serif"],
+        display: ["var(--font-display)", "serif"],
+        serif: ["var(--font-serif)", "serif"],
         sans: ["system-ui", "-apple-system", "sans-serif"],
       },
       letterSpacing: {

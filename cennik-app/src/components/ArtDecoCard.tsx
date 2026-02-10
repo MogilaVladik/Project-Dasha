@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { memo } from "react";
 import { CornerOrnament } from "./ArtDecoOrnament";
 
 interface ArtDecoCardProps {
@@ -8,36 +10,36 @@ interface ArtDecoCardProps {
   variant?: "default" | "elevated" | "bordered";
 }
 
-export const ArtDecoCard = ({
+const VARIANT_CLASSES = {
+  default: "bg-ivory border border-gold/20",
+  elevated: "bg-cream border-2 border-gold/40 shadow-lg",
+  bordered: "bg-ivory border-2 border-navy/80",
+} as const;
+
+export const ArtDecoCard = memo(function ArtDecoCard({
   children,
   className = "",
   showCorners = true,
   variant = "default",
-}: ArtDecoCardProps) => {
-  const variants = {
-    default: "bg-ivory border border-gold/20",
-    elevated: "bg-cream border-2 border-gold/40 shadow-lg",
-    bordered: "bg-ivory border-2 border-navy/80",
-  };
-
+}: ArtDecoCardProps) {
   return (
     <div
-      className={`relative ${variants[variant]} ${className}`}
+      className={`relative ${VARIANT_CLASSES[variant]} ${className}`}
       data-oid=":2ynj7j"
     >
       {showCorners && (
         <>
-          <div className="absolute top-0 left-0" data-oid="de8zmki">
-            <CornerOrnament position="top-left" data-oid="962tpnw" />
+          <div className="absolute top-0 left-0">
+            <CornerOrnament position="top-left" />
           </div>
-          <div className="absolute top-0 right-0" data-oid="g4w:0id">
-            <CornerOrnament position="top-right" data-oid="j_eor3t" />
+          <div className="absolute top-0 right-0">
+            <CornerOrnament position="top-right" />
           </div>
-          <div className="absolute bottom-0 left-0" data-oid="iv_u4-t">
-            <CornerOrnament position="bottom-left" data-oid="8znd94_" />
+          <div className="absolute bottom-0 left-0">
+            <CornerOrnament position="bottom-left" />
           </div>
-          <div className="absolute bottom-0 right-0" data-oid="b3_hp5:">
-            <CornerOrnament position="bottom-right" data-oid="rvxrh_d" />
+          <div className="absolute bottom-0 right-0">
+            <CornerOrnament position="bottom-right" />
           </div>
         </>
       )}
@@ -46,4 +48,4 @@ export const ArtDecoCard = ({
       </div>
     </div>
   );
-};
+});

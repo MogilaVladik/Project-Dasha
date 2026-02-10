@@ -7,75 +7,7 @@ import {
   GeometricDivider,
 } from "@/components/ArtDecoOrnament";
 import { BottomNav } from "@/components/BottomNav";
-
-const podcasts = [
-  {
-    id: 24,
-    title: "Будущее российского ритейла",
-    guest: "Дмитрий Иванов, CEO «Лента»",
-    description:
-      "Обсуждаем стратегию развития сети, работу с поставщиками и планы на 2025 год.",
-    duration: "45 мин",
-    date: "15 января 2025",
-    season: 3,
-    episode: 4,
-  },
-  {
-    id: 23,
-    title: "Цифровизация поставок",
-    guest: "Анна Смирнова, CDO «X5 Group»",
-    description:
-      "Как технологии меняют логистику: от автоматизации складов до прогнозирования спроса.",
-    duration: "38 мин",
-    date: "1 января 2025",
-    season: 3,
-    episode: 3,
-  },
-  {
-    id: 22,
-    title: "Тренды категорийного менеджмента",
-    guest: "Сергей Петров, эксперт Nielsen",
-    description:
-      "Анализ данных, оптимизация ассортимента и работа с новыми категориями товаров.",
-    duration: "42 мин",
-    date: "15 декабря 2024",
-    season: 3,
-    episode: 2,
-  },
-  {
-    id: 21,
-    title: "Экологичность в ритейле",
-    guest: "Елена Волкова, директор по устойчивому развитию «Азбука Вкуса»",
-    description:
-      "Как бренды внедряют эко-стандарты и что это значит для поставщиков.",
-    duration: "35 мин",
-    date: "1 декабря 2024",
-    season: 3,
-    episode: 1,
-  },
-  {
-    id: 20,
-    title: "Маркетплейсы: новая реальность",
-    guest: "Михаил Соколов, VP «Яндекс.Маркет»",
-    description:
-      "Стратегии продаж на маркетплейсах, работа с рейтингами и отзывами.",
-    duration: "50 мин",
-    date: "15 ноября 2024",
-    season: 2,
-    episode: 12,
-  },
-  {
-    id: 19,
-    title: "Ценообразование в нестабильные времена",
-    guest: "Ольга Кузнецова, финансовый директор «Дикси»",
-    description:
-      "Как балансировать между рентабельностью и конкурентоспособностью.",
-    duration: "40 мин",
-    date: "1 ноября 2024",
-    season: 2,
-    episode: 11,
-  },
-];
+import { PODCASTS, type Podcast } from "@/lib/mockData";
 
 export default function PodcastsPage() {
   return (
@@ -117,7 +49,7 @@ export default function PodcastsPage() {
             <GeometricDivider data-oid="oivmc_7" />
           </div>
 
-          <FeaturedPodcast podcast={podcasts[0]} data-oid="-.1ltxn" />
+          <FeaturedPodcast podcast={PODCASTS[0]} />
         </section>
 
         {/* All Episodes */}
@@ -130,12 +62,8 @@ export default function PodcastsPage() {
           </h2>
 
           <div className="space-y-4" data-oid="_i9h83e">
-            {podcasts.slice(1).map((podcast) => (
-              <PodcastCard
-                key={podcast.id}
-                podcast={podcast}
-                data-oid="4sr0:qo"
-              />
+            {PODCASTS.slice(1).map((podcast) => (
+              <PodcastCard key={podcast.id} podcast={podcast} />
             ))}
           </div>
         </section>
@@ -147,7 +75,7 @@ export default function PodcastsPage() {
 }
 
 // Featured Podcast Component
-const FeaturedPodcast = ({ podcast }: { podcast: (typeof podcasts)[0] }) => {
+const FeaturedPodcast = ({ podcast }: { podcast: Podcast }) => {
   return (
     <Link href={`/podcasts/${podcast.id}`} data-oid="r-d2kee">
       <div
@@ -253,7 +181,7 @@ const FeaturedPodcast = ({ podcast }: { podcast: (typeof podcasts)[0] }) => {
 };
 
 // Regular Podcast Card
-const PodcastCard = ({ podcast }: { podcast: (typeof podcasts)[0] }) => {
+const PodcastCard = ({ podcast }: { podcast: Podcast }) => {
   return (
     <Link href={`/podcasts/${podcast.id}`} data-oid="sj7mf:x">
       <div

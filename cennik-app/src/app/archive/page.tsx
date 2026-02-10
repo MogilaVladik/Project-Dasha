@@ -4,87 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArtDecoOrnament } from "@/components/ArtDecoOrnament";
 import { BottomNav } from "@/components/BottomNav";
-
-const archiveIssues = [
-  {
-    id: 12,
-    year: 2025,
-    quarter: "Q1",
-    title: "Будущее поставок в цифровую эру",
-    theme: "navy",
-  },
-  {
-    id: 11,
-    year: 2024,
-    quarter: "Q4",
-    title: "Итоги года: ритейл в цифрах",
-    theme: "black",
-  },
-  {
-    id: 10,
-    year: 2024,
-    quarter: "Q3",
-    title: "Экологичность и устойчивость",
-    theme: "navy",
-  },
-  {
-    id: 9,
-    year: 2024,
-    quarter: "Q2",
-    title: "Новые технологии логистики",
-    theme: "black",
-  },
-  {
-    id: 8,
-    year: 2024,
-    quarter: "Q1",
-    title: "Омниканальная торговля",
-    theme: "navy",
-  },
-  {
-    id: 7,
-    year: 2023,
-    quarter: "Q4",
-    title: "Тренды маркетплейсов",
-    theme: "black",
-  },
-  {
-    id: 6,
-    year: 2023,
-    quarter: "Q3",
-    title: "Автоматизация складов",
-    theme: "navy",
-  },
-  {
-    id: 5,
-    year: 2023,
-    quarter: "Q2",
-    title: "Категорийный менеджмент",
-    theme: "black",
-  },
-  {
-    id: 4,
-    year: 2023,
-    quarter: "Q1",
-    title: "Стратегии ценообразования",
-    theme: "navy",
-  },
-  {
-    id: 3,
-    year: 2022,
-    quarter: "Q4",
-    title: "Цифровая трансформация",
-    theme: "black",
-  },
-  {
-    id: 2,
-    year: 2022,
-    quarter: "Q3",
-    title: "Работа с данными",
-    theme: "navy",
-  },
-  { id: 1, year: 2022, quarter: "Q2", title: "Первый выпуск", theme: "black" },
-];
+import { ARCHIVE_ISSUES, type ArchiveIssue } from "@/lib/mockData";
 
 export default function ArchivePage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
@@ -230,15 +150,15 @@ export default function ArchivePage() {
 
         {/* Issues Display */}
         {viewMode === "grid" ? (
-          <div className="grid grid-cols-2 gap-4" data-oid="33fpeks">
-            {archiveIssues.map((issue) => (
-              <IssueCoverCard key={issue.id} issue={issue} data-oid="a8f0kqo" />
+          <div className="grid grid-cols-2 gap-4">
+            {ARCHIVE_ISSUES.map((issue) => (
+              <IssueCoverCard key={issue.id} issue={issue} />
             ))}
           </div>
         ) : (
-          <div className="space-y-3" data-oid="h.bhe6q">
-            {archiveIssues.map((issue) => (
-              <IssueListItem key={issue.id} issue={issue} data-oid="z5rkt-y" />
+          <div className="space-y-3">
+            {ARCHIVE_ISSUES.map((issue) => (
+              <IssueListItem key={issue.id} issue={issue} />
             ))}
           </div>
         )}
@@ -250,7 +170,7 @@ export default function ArchivePage() {
 }
 
 // Grid View Component
-const IssueCoverCard = ({ issue }: { issue: (typeof archiveIssues)[0] }) => {
+const IssueCoverCard = ({ issue }: { issue: ArchiveIssue }) => {
   const bgColor =
     issue.theme === "navy"
       ? "from-navy via-navy to-black"
@@ -322,7 +242,7 @@ const IssueCoverCard = ({ issue }: { issue: (typeof archiveIssues)[0] }) => {
 };
 
 // List View Component
-const IssueListItem = ({ issue }: { issue: (typeof archiveIssues)[0] }) => {
+const IssueListItem = ({ issue }: { issue: ArchiveIssue }) => {
   return (
     <Link href={`/article/${issue.id}`} data-oid=":rp4gw_">
       <div

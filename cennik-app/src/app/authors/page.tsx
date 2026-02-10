@@ -3,65 +3,7 @@
 import React from "react";
 import { ArtDecoOrnament } from "@/components/ArtDecoOrnament";
 import { BottomNav } from "@/components/BottomNav";
-
-const authors = [
-  {
-    id: 1,
-    name: "Александр Новиков",
-    role: "Главный редактор",
-    bio: "Более 15 лет в ритейл-журналистике. Бывший редактор Forbes Retail, специалист по стратегическому развитию торговых сетей.",
-    articles: 48,
-  },
-  {
-    id: 2,
-    name: "Мария Лебедева",
-    role: "Обозреватель логистики",
-    bio: "Эксперт в области логистики и supply chain. MBA Стокгольмской школы экономики. Консультант для крупнейших дистрибьюторов.",
-    articles: 32,
-  },
-  {
-    id: 3,
-    name: "Игорь Соболев",
-    role: "Аналитик рынка",
-    bio: "Специалист по категорийному менеджменту и рыночной аналитике. Бывший директор Nielsen Russia.",
-    articles: 29,
-  },
-  {
-    id: 4,
-    name: "Елена Волкова",
-    role: "Редактор подкастов",
-    bio: "Журналист, ведущая, продюсер. Опыт работы на радио «Коммерсантъ FM» и РБК. Специализация: интервью с топ-менеджментом.",
-    articles: 15,
-  },
-  {
-    id: 5,
-    name: "Дмитрий Ковалев",
-    role: "Обозреватель технологий",
-    bio: "Эксперт по цифровизации ритейла. CTO в нескольких стартапах. Специализация: автоматизация, AI и ML в торговле.",
-    articles: 24,
-  },
-  {
-    id: 6,
-    name: "Ольга Смирнова",
-    role: "Редактор маркетинга",
-    bio: "Специалист по маркетинговым стратегиям в FMCG. 10 лет в брендинге и продвижении товаров массового потребления.",
-    articles: 21,
-  },
-  {
-    id: 7,
-    name: "Сергей Петров",
-    role: "Финансовый обозреватель",
-    bio: "Аналитик рынка капитала. Специализация: финансовые показатели ритейлеров, инвестиции и M&A в торговле.",
-    articles: 18,
-  },
-  {
-    id: 8,
-    name: "Анна Кузнецова",
-    role: "Редактор трендов",
-    bio: "Исследователь потребительского поведения. Регулярный спикер на отраслевых конференциях. Соавтор книги «Ритейл будущего».",
-    articles: 27,
-  },
-];
+import { AUTHORS, type Author } from "@/lib/mockData";
 
 export default function AuthorsPage() {
   return (
@@ -91,7 +33,7 @@ export default function AuthorsPage() {
       </header>
 
       <div className="max-w-2xl mx-auto px-6 py-8 space-y-4" data-oid="s5o.qq0">
-        {authors.map((author) => (
+        {AUTHORS.map((author) => (
           <AuthorCard key={author.id} author={author} data-oid="-aslr.0" />
         ))}
       </div>
@@ -102,7 +44,7 @@ export default function AuthorsPage() {
 }
 
 // Author Card Component
-const AuthorCard = ({ author }: { author: (typeof authors)[0] }) => {
+const AuthorCard = ({ author }: { author: Author }) => {
   return (
     <div
       className="bg-cream border border-navy/10 hover:border-gold/60 transition-all p-6 group"
